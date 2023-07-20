@@ -4,6 +4,9 @@ import java.time.LocalDate;
 
 
 public class Person {
+    private String nom;
+    private String prenom;
+    private LocalDate ddn;
 
     public Person(String nom, String prenom,LocalDate ddn){
         this.nom = nom;
@@ -11,9 +14,6 @@ public class Person {
         this.ddn = ddn;
     }
 
-    private String nom;
-    private String prenom;
-    private LocalDate ddn;
 
 //        public P
 
