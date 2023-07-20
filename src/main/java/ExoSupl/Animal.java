@@ -29,7 +29,5 @@ public abstract class Animal {
         this.pattes = pattes;
     }
 
-    public void scream(){
-        System.out.println("Attendons de voir");
-    }
+    public abstract void scream();
 }
