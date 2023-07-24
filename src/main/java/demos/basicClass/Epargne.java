@@ -1,20 +1,20 @@
 package demos.basicClass;
 
-import demos.basicClass.Person;
+import demos.exeption.SoldeInsuffisantException;
 
 import java.time.LocalDateTime;
 
 
-
-public class Epargne extends Compte{
+public class Epargne extends Compte {
 
     private LocalDateTime dateDernierRetrait;
 
     public Epargne(String numero, Person titulaire) {
         super(numero, titulaire);
     }
-    public  Epargne(String numero,Person titulaire , double solde){
-        super(numero,titulaire,solde);
+
+    public Epargne(String numero, Person titulaire, double solde) {
+        super(numero, titulaire, solde);
     }
 
     public LocalDateTime getDateDernierRetrait() {
@@ -26,16 +26,17 @@ public class Epargne extends Compte{
     }
 
     @Override
-    public void retrait(double montant, double ligneDeCredit) {
+    public void retrait(double montant, double ligneDeCredit) throws SoldeInsuffisantException {
         double previous = getSolde();
         super.retrait(montant, ligneDeCredit);
-        if(previous > getSolde()){
+        if (previous > getSolde()) {
             setDateDernierRetrait(LocalDateTime.now());
         }
     }
 
+
     @Override
-    protected double CalculInteret() {
-        return 0;
+    protected double calculInteret() {
+        return getSolde() * 0.045;
     }
 }

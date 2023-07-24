@@ -1,10 +1,13 @@
 package demos.basicClass;
 
+import demos.exeption.ArgumentOutOfRangeException;
+import demos.exeption.SoldeInsuffisantException;
+
 public class Courant extends Compte {
     private double ligneDeCredit;
 
 
-    public  Courant(String numero, Person titulaire,double ligneDeCredit){
+    public  Courant(String numero, Person titulaire,double ligneDeCredit) throws ArgumentOutOfRangeException {
         super(numero,titulaire);
         this.ligneDeCredit = ligneDeCredit;
     }
@@ -12,25 +15,23 @@ public class Courant extends Compte {
         return ligneDeCredit;
     }
 
-    public void setLigneDeCredit(double ligneDeCredit) {
+    private void setLigneDeCredit(double ligneDeCredit) throws ArgumentOutOfRangeException {
         if(ligneDeCredit < 0){
-            return;
+            throw new IllegalStateException("Ligne de crédit doit être positive.");
         }
         this.ligneDeCredit = ligneDeCredit;
     }
 
     @Override
-    protected double CalculInteret(){
-        double interet;
-        if (getSolde() > 0){
-            interet = (getSolde() /100) * 3;
-        }else {
-            interet=getSolde()/100 * 9.75;
-        }
-        return interet;
+    public void retrait(double montant) throws SoldeInsuffisantException {
+        super.retrait(montant,getLigneDeCredit());
     }
     @Override
-    public void retrait(double montant, double ligneDeCredit) {
-        super.retrait(montant,getLigneDeCredit());
+    protected double calculInteret(){
+        if (getSolde() < 0 ){
+            return  getSolde() * 0.0975;
+        }
+        return getSolde() * 0.03;
+//        return getSolde() < 0 ? getSolde() * 0.0975 : getSolde() * 0.03;
     }
 }

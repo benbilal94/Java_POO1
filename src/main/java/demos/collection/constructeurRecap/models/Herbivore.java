@@ -1,4 +1,4 @@
-package demos.Collection.constructeurRecap.models;
+package demos.collection.constructeurRecap.models;
 
 public abstract class Herbivore extends Animal{
 //    Attribut

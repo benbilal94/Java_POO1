@@ -1,6 +1,6 @@
 package demos.basicClass;
 
-import demos.basicClass.Person;
+import demos.exeption.SoldeInsuffisantException;
 
 public abstract class Compte {
 
@@ -38,15 +38,16 @@ public abstract class Compte {
         this.titulaire = titulaire;
     }
 
-    public void retrait(double montant){
+    public void retrait(double montant) throws SoldeInsuffisantException{
 
         retrait(montant,0);
     }
 
-    public void retrait(double montant, double ligneDeCredit){
+
+    public void retrait(double montant, double ligneDeCredit) throws SoldeInsuffisantException {
 
         if(montant < 0){
-            return;
+          throw new IllegalArgumentException("Le montant doit etre positif");
         }
         if(getSolde() - montant < - ligneDeCredit){
             return;
@@ -54,12 +55,15 @@ public abstract class Compte {
         solde -= montant;
     }
 
-    public void depot(double montant){
+    public void depot(double montant) {
         if(montant < 0){
-            return;
+            throw new IllegalArgumentException("Le montant doit être positif.");
         }
         solde += montant;
     }
 
-    protected abstract double CalculInteret();
+    protected abstract double calculInteret();
+    public void appliquerInteret(){
+        solde += calculInteret();
+    }
 }

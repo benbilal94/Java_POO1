@@ -1,7 +1,7 @@
-package demos.Collection.constructeurRecap;
+package demos.collection.constructeurRecap;
 
-import demos.Collection.constructeurRecap.models.*;
-import demos.Collection.constructeurRecap.models.Animal;
+import demos.collection.constructeurRecap.models.*;
+import demos.collection.constructeurRecap.models.Animal;
 
 import java.util.ArrayList;
 
