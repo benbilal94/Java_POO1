@@ -33,6 +33,16 @@ public class Main {
         int res = Des.lancerDe(6,5,3);
         System.out.println(res);
 
+        List<Movie> movies = new ArrayList<>();
+
+        movies.add(new Movie("Shutter Island"));
+        movies.add(new Movie(" Inception"));
+        movies.add(new Movie("Tintin"));
+
+        List<String> titles = movies.stream()
+                .map(m -> m.getTitle())
+                .toList();
+
     }
 
 }
