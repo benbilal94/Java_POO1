@@ -11,6 +11,11 @@ public class Courant extends Compte {
         super(numero,titulaire);
         this.ligneDeCredit = ligneDeCredit;
     }
+
+    public Courant(String numero,Person titulaire){
+        super(numero,titulaire);
+    }
+
     public double getLigneDeCredit() {
         return ligneDeCredit;
     }

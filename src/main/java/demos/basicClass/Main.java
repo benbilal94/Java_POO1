@@ -1,5 +1,6 @@
 package demos.basicClass;
 
+import demos.basicClass.interfaces.Customer;
 import demos.exeption.ArgumentOutOfRangeException;
 import demos.exeption.SoldeInsuffisantException;
 
@@ -28,5 +29,7 @@ public class Main {
         }catch (Exception ex){
             System.out.println(ex.getMessage());
         }
+
+        Customer customer = new Courant("3",p1);
     }
 }
