@@ -35,4 +35,9 @@ public class Banque {
 
         return getComptes().get(numero);
     }
+
+    private void passageEnNegatifAction(Compte c){
+
+        System.out.println("Le compte " + c.getNumero() + "de la banque " + this.getNom() + " vient de passer en négatif");
+    }
 }

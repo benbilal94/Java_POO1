@@ -3,10 +3,11 @@ package demos.basicClass;
 import demos.basicClass.interfaces.Banker;
 import demos.basicClass.interfaces.Customer;
 import demos.exeption.SoldeInsuffisantException;
+import demos.basicClass.interfaces.PassageEnNegatifSubscriber;
 
 public abstract class Compte implements Customer,Banker {
 
-
+    private PassageEnNegatifSubscriber passageEnNegatifEvent;
     private String numero;
     private double solde;
     private Person titulaire;
@@ -69,5 +70,18 @@ public abstract class Compte implements Customer,Banker {
 
     public void appliquerInteret() {
         solde += calculInteret();
+    }
+
+    public void setPassageEnNegatifEvent(PassageEnNegatifSubscriber subscriber){
+
+        passageEnNegatifEvent = subscriber;
+    }
+
+    public void raisePassageEnNegatifEvent(){
+
+        if(passageEnNegatifEvent == null){
+            return;
+        }
+        passageEnNegatifEvent.execute(this);
     }
 }

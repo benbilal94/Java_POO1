@@ -8,10 +8,12 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Main {
+
     public static void main(String[] args) throws ArgumentOutOfRangeException {
 
-        Person p1 = new Person("Billy","Wonka", LocalDate.of(1993,12,15));
-        Courant c1 = new Courant("65526",p1,1000);
+
+        Person p1 = new Person("Billy", "Wonka", LocalDate.of(1993, 12, 15));
+        Courant c1 = new Courant("65526", p1, 1000);
 
         Banque banque = new Banque("Les voleurs");
         banque.ajouterCompte(c1);
@@ -20,16 +22,24 @@ public class Main {
             c1.depot(1000);
             banque.recupCompte("1").retrait(1000);
             banque.recupCompte("2").retrait(500);
-        }catch (SoldeInsuffisantException ex){
+        } catch (SoldeInsuffisantException ex) {
             System.out.println(ex.getMessage());
-        }catch (IllegalStateException ex){
+        } catch (IllegalStateException ex) {
             System.out.println(ex.getMessage());
-        }catch (IllegalArgumentException ex){
+        } catch (IllegalArgumentException ex) {
             System.out.println(ex.getMessage());
-        }catch (Exception ex){
+        } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
 
-        Customer customer = new Courant("3",p1);
+        Customer customer = new Courant("3", p1);
+
+        Position pos1 = new Position(5, 3);
+        pos1.x();
+        pos1.y();
+
+
+
     }
+
 }

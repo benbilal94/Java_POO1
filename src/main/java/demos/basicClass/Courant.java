@@ -29,7 +29,11 @@ public class Courant extends Compte {
 
     @Override
     public void retrait(double montant) throws SoldeInsuffisantException {
+        double previous = getSolde();
         super.retrait(montant,getLigneDeCredit());
+        if(previous >= 0 && getSolde() < 0){
+            raisePassageEnNegatifEvent();
+        }
     }
     @Override
     protected double calculInteret(){
